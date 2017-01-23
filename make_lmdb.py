@@ -16,8 +16,13 @@ def make_datum(img,label):
 	height=IMG_H,
 	label=label,
 	data=img.tostring())
-
-def convert(imgf, labelf, n, lmdb_file):
+#Begin - Kevin 01-22-2017
+'''
+Action: Attempted to split training data set into training/validation
+Results: Received very low accuracy ~ 0.09 and slow iteration speed
+'''
+#def convert(imgf, labelf, n, lmdb_file):
+def convert(imgf, labelf, n, lmdb_file, partition):
     f = open(imgf, "rb")
     l = open(labelf, "rb")
 
@@ -34,7 +39,13 @@ def convert(imgf, labelf, n, lmdb_file):
 	        img_uc = struct.unpack("=784B", image_bytes)
 	        for j in range(28*28):
 		    image.itemset(j, img_uc[j])
-  	    ''' 
+  	    '''
+	    if partition == 'train':
+		if i % 6 == 0:
+		    continue 
+	    elif partition == 'val':
+		if i % 6 != 0:
+		    continue	
             for j in range(28*28):
 	        c = ord(f.read(1))
                 image.itemset(j, c)
@@ -44,6 +55,7 @@ def convert(imgf, labelf, n, lmdb_file):
 	    #print image2
 	    datum = make_datum(image2, label)
 	    txn.put('{:0>5d}'.format(i), datum.SerializeToString())
+#	    print '{:0>5d}'.format(i) + ':' + image
     lmdb_file.close()
     '''
     for image in images:
@@ -55,9 +67,14 @@ def convert(imgf, labelf, n, lmdb_file):
  
 train_lmdb = 'train_lmdb'
 val_lmdb = 'val_lmdb'
+print '\nCreating training_lmdb'
 in_db = lmdb.open(train_lmdb, map_size=int(1e12))
 convert("train-images-idx3-ubyte", "train-labels-idx1-ubyte",
-         60000, in_db)
+         60000, in_db, 'train')
+print '\nCreating validation_lmdb'
 in_db = lmdb.open(val_lmdb, map_size=int(1e12))
-convert("t10k-images-idx3-ubyte", "t10k-labels-idx1-ubyte",
-         10000, in_db)
+convert("train-images-idx3-ubyte", "train-labels-idx1-ubyte",
+         60000, in_db, 'val')
+#convert("t10k-images-idx3-ubyte", "t10k-labels-idx1-ubyte",
+#         10000, in_db, 'val')
+#End - Kevin 01-22-2017
