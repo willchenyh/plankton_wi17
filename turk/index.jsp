@@ -1,10 +1,13 @@
+/*
 <%--
   Created by IntelliJ IDEA.
   User: apple
   Date: 06/11/2017
   Time: 8:56 PM
   To change this template use File | Settings | File Templates.
---%>
+ --%>
+ */
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -18,15 +21,15 @@
         <div class="panel-heading"><strong>Instructions</strong></div>
 
         <div class="panel-body">
-          <p>Draw a dot at the location of head:</p>
+          <p>Place a dot at specified location for each column and determine direction:</p>
 
           <ol>
-            <li>Finding the Head of the copepods. Move the mouse to the location of the head.</li>
-            <li>Annotate the location by clicking the left mouse. Please do NOT draw a large box. Only a small dot at the location of Head will be approved. Only one location is required, please do not draw multiple dot.</li>
-            <li>A good example of annotation can be find at:<a href="https://goo.gl/3iscbB">https://goo.gl/3iscbB</a>.</li>
-            <li>Head location can sometimes be hard to distinguish. To find antennas of the copepods, and then the head will be under and between the two antennas.</li>
-            <li>The tail may look like antenna but tail is generally smooth while antenna has root-like structure.&nbsp;</li>
-            <li>Here are some challenging images:&nbsp;<a href="https://goo.gl/H2ceCh">https://goo.gl/H2ceCh</a>. Please take a look and use as a guidance.</li>
+            <li>1. Finding the head of the specimen. Move the mouse to the location.</li>
+            <li>2. Annotate the location by clicking the left mouse. A small dot will appear at the location of the mouse. Please do not draw multiple dots on the image.</li>
+            <li>- Annotation samples are given in the first row of images for each feature identification. All of the images for this task are the same specimen, but in different poses.</li> 
+            <li>3. Repeat steps 1 and 2 for the tail of the specimen in the second column.</li> 
+            <li>4. Select the Z direction of the specimen in column 3</li> 
+            <li>- See examples of each direction option at: . Please take a look and use as reference</li> 
           </ol>
         </div>
       </div>
