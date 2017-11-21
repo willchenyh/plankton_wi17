@@ -57,16 +57,24 @@
         </tr>
         </thead>
         <tbody>
-        <% for (int i = 1; i <= 8; i++) { %>
+        <% for (int i = 1; i <= 9; i++) { %>
         <tr>
           <th scope="row"><%= i %></th>
-          <td>
-            <img alt="Placeholder" class="img-responsive" height="200" src="/Users/ktl014/Documents/ECE 191 Project/MTurk/SPC2-1441562601-021228-001-2316-2508-120-152.jpg" width="200" />
-          </td>
-          <td>
-            <img alt="Placeholder" class="img-responsive" height="200" src="/Users/ktl014/Documents/ECE 191 Project/MTurk/SPC2-1441562601-021228-001-2316-2508-120-152.jpg" width="200" />
-          </td>
-          <td>
+            <% if (i==1) { %>
+              <td>
+                <img alt="Placeholder" class="img-responsive" height="200" src="/Users/ktl014/Documents/ECE 191 Project/MTurk/SPC2-1441562601-021228-001-2316-2508-120-152.jpg" width="200" />
+              </td>
+              <td>
+                <img alt="Placeholder" class="img-responsive" height="200" src="/Users/ktl014/Documents/ECE 191 Project/MTurk/SPC2-1441562601-021228-001-2316-2508-120-152.jpg" width="200" />
+              </td>
+            <% } else { %>
+              <td>
+                <img alt="Placeholder" class="img-responsive" height="200" src="/Users/ktl014/Documents/ECE 191 Project/MTurk/SPC2-1441562601-021228-001-2316-2508-120-152.jpg" width="200" />
+              </td>
+              <td>
+                <img alt="Placeholder" class="img-responsive" height="200" src="/Users/ktl014/Documents/ECE 191 Project/MTurk/SPC2-1441562601-021228-001-2316-2508-120-152.jpg" width="200" />
+              </td>
+            <% } %>
             <form class="btn-group-vertical">
               <div class="radio"><label><input type="radio" name="specimen-radio-<%= i %>">Parallel</label></div>
               <div class="radio"><label><input type="radio" name="specimen-radio-<%= i %>">Facing Camera</label></div>
